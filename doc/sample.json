@@ -1,28 +1,30 @@
 { "http://yahoo.co.jp" : 
-  { "http://search.yahoo.co.jp" : null 
-  , "http://shopping.yahoo.co.jp" : null
-  , "http://travel.yahoo.co.jp" : 
-    { "http://domestic.hotel.travel.yahoo.co.jp/" : null
-    , "http://domestic.tour.travel.yahoo.co.jp/" : null
-    , "http://travel.yahoo.co.jp/domestic_dp/" : 
-      { "https://rps.atour.ana.co.jp/adam/internet/" : null }
+  [ {"http://search.yahoo.co.jp" : null } 
+  , {"http://shopping.yahoo.co.jp" : null}
+  , {"http://travel.yahoo.co.jp" : 
+    [ {"http://domestic.hotel.travel.yahoo.co.jp/" : null }
+    , {"http://domestic.tour.travel.yahoo.co.jp/" : null }
+    , {"http://travel.yahoo.co.jp/domestic_dp/" : 
+      [{ "https://rps.atour.ana.co.jp/adam/internet/" : null }]
+      }
+    ]
     }
-  }
+  ]
 }
 
 
 
 
-                                                                       yahoo
-								        |
-						------------------------------------------------
-						|	                |                      |
-					   search.yahoo            shopping.yahoo         travel.yahoo
-					        |		   	|		       |
-					      null        	      null            -------------------------------------------
-					      			      		      |	                    |		        |
-										domestic.hotel       domestic.tour          travel.yahoo
-										      |                     |                   |
-										     null		  null		        |
-										     			  		    rps.atour.ana 
+                                                      yahoo
+					     	        |
+				------------------------------------------------
+				|	                |                      |
+			   search.yahoo            shopping.yahoo         travel.yahoo
+			        |		   	|		       |
+			      null        	      null            -------------------------------------------
+			      			      		      |	                    |		        |
+								domestic.hotel       domestic.tour          travel.yahoo
+								      |                     |                   |
+								     null		  null		        |
+								     			  		    rps.atour.ana 
 																
