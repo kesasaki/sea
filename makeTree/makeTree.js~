@@ -10,8 +10,8 @@ if (Meteor.is_client) {
     'click input' : function () {
       // template data, if any, is available in 'this'
 	var url = Mainpage.findOne({}).url;
-	Meteor.call('foo',function(err,res){alert(res);});
-
+	var res = Meteor.call('analyze',url);
+	alert(res);
     }
   };
   
@@ -45,12 +45,10 @@ if (Meteor.is_server) {
 	  }
   });
   Meteor.methods({
-	  baz : function(){
-	      return "baz";
-	  },
-	  foo : function(){
-	      //	      var result = Meteor.http.call('GET',url);
-	      return 'foo';
+	  analyze : function(url){
+	      var result = Meteor.http.call('GET',url);
+	      var urls = result.match(/(\w):\/\/([\w.]+)\/(\S*)/g);
+	      return result;
 	  }
   });
   

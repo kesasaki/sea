@@ -10,11 +10,16 @@ if (Meteor.is_client) {
     'click input' : function () {
       // template data, if any, is available in 'this'
 	var url = Mainpage.findOne({}).url;
-	var res = Meteor.call('analyze',url);
-
+	Meteor.call('analyze',url,function(err,res){
+		alert(res[0]);
+	    });
     }
   };
   
+  Template.resultArea.urls = function(){
+      return "None";
+  }
+
   Template.getUrlParam.geturl = function () {
       var query = window.location.search.substring(1);
       var params = query.split('&');
@@ -45,9 +50,10 @@ if (Meteor.is_server) {
 	  }
   });
   Meteor.methods({
-	  analyze : function(){
+	  'analyze' : function(url){
 	      var result = Meteor.http.call('GET',url);
-	      return 'foo';
+	      var urls = result.content.match(/(\w+):\/\/([\w.]+)\/(\S*)/g);
+	      return urls;
 	  }
   });
   
