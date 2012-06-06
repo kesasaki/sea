@@ -11,7 +11,7 @@ if (Meteor.is_client) {
       // template data, if any, is available in 'this'
 	var url = Mainpage.findOne({}).url;
 	Meteor.call('analyze',url,function(err,res){
-		alert(res[0]);
+		alert(res);
 	    });
     }
   };
@@ -51,10 +51,29 @@ if (Meteor.is_server) {
   });
   Meteor.methods({
 	  'analyze' : function(url){
-	      var result = Meteor.http.call('GET',url);
-	      var urls = result.content.match(/(\w+):\/\/([\w.]+)\/(\S*)/g);
-	      return urls;
+	      var tree = makeTree(url);
+      	      return tree;
 	  }
   });
+  function makeTree(url){
+      var source = Meteor.http.call('GET',url);
+      var urls = result.content.match(/(\w+):\/\/([\w.]+)\/(\S*)/g);
+      var childs = [];
+      var own = {};
+      for(var i = 0 ; i < urls.length ; i++){
+	  var included = Bookmarks.find({url : urls[i]});
+	  if(included.count){
+	      var child = makeTree(urls[i]);
+	  }
+	  childs.push(child);
+      }
+      if(!child){
+	  own[url] = null;
+      }
+      else{
+	  own[ur] = childs;
+      }
+      return own;
+  }
   
 }

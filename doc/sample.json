@@ -13,18 +13,18 @@
 }
 
 
+配列を保持するオブジェクト
 
-
-                                                      yahoo
-					     	        |
-				------------------------------------------------
-				|	                |                      |
-			   search.yahoo            shopping.yahoo         travel.yahoo
-			        |		   	|		       |
-			      null        	      null            -------------------------------------------
-			      			      		      |	                    |		        |
-								domestic.hotel       domestic.tour          travel.yahoo
-								      |                     |                   |
-								     null		  null		        |
-								     			  		    rps.atour.ana 
-																
+                                      yahoo
+			     	        |
+		------------------------------------------------
+		|	                |                      |
+	   search.yahoo            shopping.yahoo         travel.yahoo
+	        |		   	|		       |
+	      null        	      null            -------------------------------------------
+	      			      		      |	                    |		        |
+						domestic.hotel       domestic.tour          travel.yahoo
+						      |                     |                   |
+						     null		  null		        |
+						     			  		    rps.atour.ana 
+															
