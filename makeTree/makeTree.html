@@ -3,22 +3,23 @@
 </head>
 
 <body>
+  <div class='offset4' style='margin-top:100px;'>
   {{> hello}}
-  {{> resultArea}}
   {{> getUrlParam }}
+  </div>
 </body>
 
 <template name="hello">
   <h1>Making Tree</h2>
   {{greeting}}
-  <input type="button" value="Click" />
+  <br><br>
+  <input type="button" value="Click" id="start"/>
+  <input type="text" size="30" id="mainURL"/>
+  {{display_tree}}
 </template>
 
 <template name="getUrlParam">
   {{geturl}}
 </template>
 
-<template name="resultArea">
-  {{urls}}
-</template>
 

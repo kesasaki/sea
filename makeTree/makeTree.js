@@ -2,23 +2,31 @@ var Bookmarks = new Meteor.Collection("bookmarks");
 var Mainpage = new Meteor.Collection("mainpage");
 
 if (Meteor.is_client) {
+    var tree = {};
   Template.hello.greeting = function () {
-    return "Welcome to makeTree.";
+    return "Welcome to makeTree.This is http tree making app";
   };
 
+  Template.hello.display_tree = function(){
+      var out = "";
+      for( prop in tree ) {
+	  out += tree[prop]+"<br>";
+      }
+      return out;
+  }
   Template.hello.events = {
-    'click input' : function () {
+    'click #start' : function () {
       // template data, if any, is available in 'this'
-	var url = Mainpage.findOne({}).url;
+	var url = $("#mainURL").val();
 	Meteor.call('analyze',url,function(err,res){
-		alert(res);
+		tree = JSON.stringify(res);
+		alert(tree);
 	    });
     }
   };
+
   
-  Template.resultArea.urls = function(){
-      return "None";
-  }
+
 
   Template.getUrlParam.geturl = function () {
       var query = window.location.search.substring(1);
@@ -42,38 +50,42 @@ if (Meteor.is_client) {
 if (Meteor.is_server) {
   Meteor.startup(function () {
     // code to run on server at startup
-	  var bms = ["http://www.google.com"
-		     ,"http://www.yahoo.co.jp"
-		     ,"http://www.gree.co.jp"];
+	  Bookmarks.remove({});
+	  var bms = ["http://twitter.com"
+		     ,"http://www.facebook.com"
+		     ,"http://lewuathe.sakura.ne.jp"];
 	  for(var i = 0 ; i < bms.length ; i++){
 	      Bookmarks.insert({url : bms[i], point : Math.random()});
 	  }
   });
   Meteor.methods({
 	  'analyze' : function(url){
-	      var tree = makeTree(url);
-      	      return tree;
+	      var tree = makeTree(url,1);
+	      return tree;
 	  }
   });
-  function makeTree(url){
+  function makeTree(url,depth){
       var source = Meteor.http.call('GET',url);
-      var urls = result.content.match(/(\w+):\/\/([\w.]+)\/(\S*)/g);
+      var urls = source.content.match(/(\w+):\/\/([\w.]+)/g);
       var childs = [];
       var own = {};
+      if(depth < 0 ){
+	  own[url] = null;
+	  return own;
+      }
       for(var i = 0 ; i < urls.length ; i++){
 	  var included = Bookmarks.find({url : urls[i]});
-	  if(included.count){
-	      var child = makeTree(urls[i]);
+	  if(included.count() > 0){
+	      var child = makeTree(urls[i],depth-1);
+	      childs.push(child);
 	  }
-	  childs.push(child);
       }
-      if(!child){
+      if(child === []){
 	  own[url] = null;
       }
       else{
-	  own[ur] = childs;
+	  own[url] = childs;
       }
       return own;
-  }
-  
+  }  
 }

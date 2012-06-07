@@ -19,5 +19,3 @@
 <template name="getUrlParam">
   {{geturl}}
 </template>
-
-
