@@ -2,19 +2,29 @@ var Bookmarks = new Meteor.Collection("bookmarks");
 var Mainpage = new Meteor.Collection("mainpage");
 
 if (Meteor.is_client) {
+    var tree = {};
   Template.hello.greeting = function () {
-    return "Welcome to makeTree.";
+    return "Welcome to makeTree.This is http tree making app";
   };
 
+  Template.hello.display_tree = function(){
+      var out = "";
+      for( prop in tree ) {
+	  out += tree[prop]+"<br>";
+      }
+      return out;
+  }
   Template.hello.events = {
-    'click input' : function () {
+    'click #start' : function () {
       // template data, if any, is available in 'this'
-	var url = Mainpage.findOne({}).url;
+	var url = $("#mainURL").val();
 	Meteor.call('analyze',url,function(err,res){
-		alert(res);
+		tree = JSON.stringify(res);
+		alert(tree);
 	    });
     }
   };
+
   
 
 
@@ -50,7 +60,7 @@ if (Meteor.is_server) {
   });
   Meteor.methods({
 	  'analyze' : function(url){
-	      var tree = makeTree(url,2);
+	      var tree = makeTree(url,1);
 	      return tree;
 	  }
   });
