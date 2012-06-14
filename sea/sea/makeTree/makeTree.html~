@@ -1,0 +1,25 @@
+<head>
+  <title>makeTree</title>
+</head>
+
+<body>
+  <div class='offset4' style='margin-top:100px;'>
+  {{> hello}}
+  {{> getUrlParam }}
+  </div>
+</body>
+
+<template name="hello">
+  <h1>Making Tree</h2>
+  {{greeting}}
+  <br><br>
+  <input type="button" value="Click" id="start"/>
+  <input type="text" size="30" id="mainURL"/>
+  {{display_tree}}
+</template>
+
+<template name="getUrlParam">
+  {{geturl}}
+</template>
+
+
