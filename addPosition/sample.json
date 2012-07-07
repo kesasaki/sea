@@ -1,0 +1,11 @@
+﻿{ "http://yahoo.co.jp" : 
+  { "http://search.yahoo.co.jp" : null 
+  , "http://shopping.yahoo.co.jp" : null
+  , "http://travel.yahoo.co.jp" : 
+    { "http://domestic.hotel.travel.yahoo.co.jp/" : null
+    , "http://domestic.tour.travel.yahoo.co.jp/" : null
+    , "http://travel.yahoo.co.jp/domestic_dp/" : 
+      { "https://rps.atour.ana.co.jp/adam/internet/" : null }
+    }
+  }
+}
