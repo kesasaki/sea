@@ -413,7 +413,22 @@ function loop() {
 	
 	getPositions();
 	
+	/* デバッグ表示 	木表示*/
+	console.log("");
+	console.log("+++++++++++ showTree +++++++++++");
+	showTree(positions,0);
+	console.log("");
+
 	out = resultParse(positions);
+
+	/* デバッグ 	木表示*/
+	console.log("");
+	console.log("+++++++++++ showTree +++++++++++");
+	showTree(out,0);
+	console.log("");
+
+
+
 	insertData(out);
 	
 	moveCircles();
@@ -713,7 +728,7 @@ function addPosition(tree){
 function showTree(tree, depth){
 	var out = new Array();
 	for(var prop in tree){
-		console.log(depth + " " + prop);
+		//console.log(depth + " " + prop);
 		if(tree[prop] === null){
 		}
 		else{ 
