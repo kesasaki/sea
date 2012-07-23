@@ -1,0 +1,72 @@
+div#canvas-frame{
+	margin: auto;
+	border: none;
+	cursor: pointer;
+	width: 1600px;
+	height: 800px;
+	background-color: #ffffff;
+}
+
+img.bg{
+	min-height: 100%;
+	min-width : 1024px; 
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;	
+}
+
+@media screen and (max-width: 1024px){
+	img.bg{
+		left: 50%;
+		margin-left: -512px;
+	}
+}
+
+div.icon-space{
+	position: relative;
+	
+	margin-top: 100px;
+	margin-left: 350px;
+	width : 700px;
+	height: 400px;
+}
+
+img.icon{
+	margin-top : 50px;
+	margin-left : 50px;
+	height: 100px;
+	width :100px;
+}
+
+canvas.spring{
+	border: double 5px #000000;
+	margin-top : 100px;
+	margin-left: 200px;
+}
+
+article{
+	border: solid 3px #0f0f4f;
+	margin-top 30px;
+	margin-left: 100px;
+	width : 400px;
+	height : 600px;
+}
+
+section{
+	border: solid 1px #00ff00;
+	padding-top : 40px;
+	padding-bottom : 10px;
+	width: 400px;
+	height: 100px;
+}
+
+header#Nikayotter_title{
+	border: solid 2px #aff0ac;
+	width : 300px;
+	height : 70px;
+	padding-left : 30px;
+	font-size: 20pt;
+	font-family: 'Courier';
+}
