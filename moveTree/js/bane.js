@@ -24,18 +24,18 @@ var inputTree = {'http://lewuathe.sakura.ne.jp': [
 		]};
 
 // 座標ありアドレス木
-var positions = {'100,300,300,http://lewuathe.sakura.ne.jp': [
-			{'200,300,300,http://mixi.jp/': [
-				{'300,300,300,https://twitter.com/': [
-					{'400,300,300,https://www.google.co.jp/': [
-						{'500,300,300,http://www.yahoo.co.jp/': null},
-						{'500,500,500,http://www.facebook.com': null}
+var positions = {'100,10,300,http://lewuathe.sakura.ne.jp': [
+			{'200,10,300,http://mixi.jp/': [
+				{'300,10,300,https://twitter.com/': [
+					{'400,10,300,https://www.google.co.jp/': [
+						{'500,10,300,http://www.yahoo.co.jp/': null},
+						{'500,10,500,http://www.facebook.com': null}
 					]}, 
-					{'400,500,500,http://www.amazon.co.jp/': null}
+					{'400,10,500,http://www.amazon.co.jp/': null}
 				]}, 
-				{'300,500,500,http://www.2ch.net/': null}
+				{'300,10,500,http://www.2ch.net/': null}
 			]},
-			{'200,300,500,http://dka-hero.com/top.html': null}
+			{'200,10,500,http://dka-hero.com/top.html': null}
 		]};
 
 
@@ -156,14 +156,14 @@ function is_pushed(event,Node){
 
 loop_num = 0;
 /*メインループ*/
-function loop(){
+/*function loop(){
 	loop_num++;
 	$("canvas.spring").clearCanvas();
 	$("span#step").text(loop_num);
 	$("span#len").text(SPRING_APP.Nodes.length);
 	display();
 
-}
+}*/
 
 /*メインディスプレイ関数*/
 function display(){
@@ -314,10 +314,10 @@ SPRING_APP = {
 	
 	/*弾性係数とバネの自然長さ*/
 	K : 4.0,	
-	L : 50.0,
+	L : 200.0,
 	
 	/*反発係数*/
-	R : 10.0,
+	R : 20.0,
 	
 	/*ノードの追加*/
 	AddNode : function(URL,Node){ 
